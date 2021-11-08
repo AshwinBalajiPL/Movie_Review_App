@@ -11,5 +11,6 @@ class Movie_Review(models.Model):
     review = models.TextField()
     poster = models.ImageField()
 
+
     def __str__(self):
         return self.title
