@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{object.title}}
+{% endblock title %}
+{% block content %}
+<a href="{% url 'BlogPost:Home' %}" id="viewpost-back" style="margin: -20px 0 10px 20px;" class="btn btn-dark">&#10094;  Back</a><br><br>
+<div class="view">
+<h1>{{object.title}}</h1>
+<p>Author : <b>{{object.author}}</b></p>
+<p>Posted on : <b>{{object.timestamp}}</b></p><br><hr style="height:2px;border:gray;background-color:darkgray;width: 70%;">
+<p class="body">{{object.body}}</p>
+</div>
+
+{% endblock content %}

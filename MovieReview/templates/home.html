@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home 
+{% endblock title %}
+    {% block content %}
+
+<h1 style="text-align: center;margin-bottom: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;margin-left: 25px;">All Reviews</h1>
+{% for post in object_list %}
+
+<div class="container">
+    <div class="row align-items-center">
+      <div class="col" style=" display:flex; justify-content:center;">
+        <div class="card" id="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="padding: 4px;">
+                    <h6 class="card-text" style="text-align: left;margin-left: 25px;"><b>@{{post.posted_by.username}}</b></h6> 
+                </li>
+                <li class="list-group-item" style="padding: 4px;">
+                    <h6 class="card-text" style="text-align: left;margin-left: 25px;">Posted on: <b>{{post.posted_on.date}}</b></h6>
+                </li>
+            
+            <li class="list-group-item" style="padding: 4px;">
+            <img src="{{post.poster.url}}" class="card-img-top" style="width: 100%;" alt="..."></li>
+            <li class="list-group-item" style="padding: 4px;">
+            <h4 class="card-title">{{post.title}}</h4></li>
+            <li class="list-group-item" style="padding: 4px;">
+            <b class="card-text">{{post.director}}</b><br></li>
+            <li class="list-group-item" style="padding: 4px;">
+            <p style="font-size: medium;overflow-wrap:break-word;padding-top: 20px;" class="card-text">{{post.review|slice:":300"}}
+                    <!-- <a href="">Read More</a> -->
+            </p></li>
+            </ul>
+          </div>
+      </div>
+</div>
+<br><br>
+
+{% endfor %}
+
+{% endblock content %}
+
+
+
+
+
