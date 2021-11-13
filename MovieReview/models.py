@@ -11,6 +11,8 @@ class Movie_Review(models.Model):
     review = models.TextField()
     poster = models.ImageField()
 
+    class Meta:
+        ordering=['-posted_on']
 
     def __str__(self):
         return self.title
