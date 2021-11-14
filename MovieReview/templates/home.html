@@ -42,7 +42,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
+</div>u
 <br><br><br>
 <h1 style="text-align: center;margin-bottom: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: white;">All Posts</h1><br>
 <div class="container">
@@ -51,22 +51,30 @@
       <div class="col" style=" display:flex; justify-content:center;">
         <div class="card" id="card">
             <ul class="list-group list-group-flush">
+                
+              {% if user.username == post.posted_by.username %}
+
                 <li class="list-group-item" style="padding: 4px;">
                     <h6 class="card-text" style="text-align: left;margin-left: 25px;"><b>@{{post.posted_by.username}}</b></h6> 
                 </li>
+                {% else %}
+                <li class="list-group-item" style="padding: 4px;">
+                  <h6 class="card-text" style="text-align: left;margin-left: 25px;"><b><a href="{% url 'moviereview:userpost' post.posted_by.username %}">@{{post.posted_by.username}}</a></b></h6> 
+              </li>
+              {% endif %}
                 <li class="list-group-item" style="padding: 4px;">
                     <h6 class="card-text" style="text-align: left;margin-left: 25px;">Posted on: <b>{{post.posted_on.date}}</b></h6>
                 </li>
             
             <li class="list-group-item" style="margin: 0;padding: 0;">
-            <img src="{{post.poster.url}}" class="card-img-top" style="width:300px;height: auto;"></li>
+            <img src="{{post.poster.url}}" class="card-img-top"></li>
             <li class="list-group-item" style="padding: 4px;">
-            <h6 class="card-title"><b>Movie Name : {{post.title}}</b></h6></li>
+            <h6 class="card-title"><b><a href="{% url 'moviereview:viewpost' post.id %}">Movie Name : {{post.title}}</a></b></h6></li>
             <li class="list-group-item" style="padding: 4px;">
-            <b class="card-text">Directed By : {{post.director}}</b><br></li>
+            <b class="card-text"><a href="{% url 'moviereview:director' post.director %}">Directed By : {{post.director}}</a></b><br></li>
             <li class="list-group-item" style="padding: 4px;">
             <p class="card-text">{{post.review|slice:":300"}}
-                    <!-- <a href="">Read More</a> -->
+                    <a href="">Read More</a>
             </p></li>
             </ul>
           </div>

@@ -3,12 +3,29 @@
   {{object.title}}
 {% endblock title %}
 {% block content %}
-<a href="{% url 'BlogPost:Home' %}" id="viewpost-back" style="margin: -20px 0 10px 20px;" class="btn btn-dark">&#10094;  Back</a><br><br>
-<div class="view">
-<h1>{{object.title}}</h1>
-<p>Author : <b>{{object.author}}</b></p>
-<p>Posted on : <b>{{object.timestamp}}</b></p><br><hr style="height:2px;border:gray;background-color:darkgray;width: 70%;">
-<p class="body">{{object.body}}</p>
+<a href="{% url 'moviereview:home' %}" id="viewpost-back" style="margin: -20px 0 10px 20px;" class="btn btn-dark">&#10094;  Back</a><br><br>
+<div class="card mb-3" style="width: 90%;margin: 40px;margin-right: 100px;">
+  <div class="row g-0">
+    <div class="col-md-6">
+      <img src="{{object.poster.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          
+          {% if user.username != object.posted_by.username %}
+          <li class="list-group-item"><h4 class="card-title"><a href="{% url 'moviereview:userpost' object.posted_by.username %}">@{{object.posted_by.username}}</a></h4></li>
+            {% else %}
+          <li class="list-group-item"><h4 class="card-title">@{{object.posted_by.username}}</h4></li>
+          {% endif %}
+          <li class="list-group-item"><h6 class="card-title">Posted On :{{object.posted_on}}</h6></li>
+          <li class="list-group-item"><h5 class="card-title">Movie Name : {{object.title}}</h5></li>
+          <li class="list-group-item"><h5 class="card-title">Directed By : {{object.director}}</h5></li>
+          <li class="list-group-item"><p class="card-text">Review : {{object.review}}</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

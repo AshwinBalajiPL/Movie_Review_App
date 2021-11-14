@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}
-{{view.kwargs.username}}
+{{directors}}
 {% endblock title %}
 {% block content %}
 <a href="{% url 'moviereview:home' %}" style="margin: -20px 0 10px 20px;" class="btn btn-dark">&#10094;  Back</a><br><br>
-<h1 style="text-align: center;margin-bottom: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: white;">Posts By {{view.kwargs.username}}</h1>
+<h1 style="text-align: center;margin-bottom: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: white;">Movies by {{ directors }}</h1>
 <div class="container">
-    {% for post in object_list %}
+    {% for post in directorposts %}
       <div class="row align-items-center">
         <div class="col" style=" display:flex; justify-content:center;">
           <div class="card" id="card">
@@ -24,9 +24,8 @@
                 <li class="list-group-item" style="padding: 4px;">
                     <h6 class="card-text" style="text-align: left;margin-left: 25px;">Posted on: <b>{{post.posted_on.date}}</b></h6>
                 </li>
-              
               <li class="list-group-item" style="margin: 0;padding: 0;">
-              <img src="{{post.poster.url}}" class="card-img-top"></li>
+              <img src="{{post.poster.url}}" class="card-img-top" style="width:300px;height: auto;"></li>
               <li class="list-group-item" style="padding: 4px;">
               <h6 class="card-title"><b><a href="{% url 'moviereview:viewpost' post.id %}">Movie Name : {{post.title}}</a></b></h6></li>
               <li class="list-group-item" style="padding: 4px;">
