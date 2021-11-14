@@ -69,12 +69,14 @@
             <li class="list-group-item" style="margin: 0;padding: 0;">
             <img src="{{post.poster.url}}" class="card-img-top"></li>
             <li class="list-group-item" style="padding: 4px;">
-            <h6 class="card-title"><b><a href="{% url 'moviereview:viewpost' post.id %}">Movie Name : {{post.title}}</a></b></h6></li>
+            <h6 class="card-title"><b>Movie Name : <a href="{% url 'moviereview:viewpost' post.id %}">{{post.title}}</a></b></h6></li>
             <li class="list-group-item" style="padding: 4px;">
-            <b class="card-text"><a href="{% url 'moviereview:director' post.director %}">Directed By : {{post.director}}</a></b><br></li>
+            <b class="card-text">Directed By : <a href="{% url 'moviereview:director' post.director %}">{{post.director}}</a></b><br></li>
             <li class="list-group-item" style="padding: 4px;">
-            <p class="card-text">{{post.review|slice:":300"}}
-                    <a href="">Read More</a>
+            <p class="card-text">{{post.review|slice:":300"}} 
+              {% if post.review|wordcount > 30 %}
+                <a href="{% url 'moviereview:viewpost' post.id %}">Read More</a>
+              {% endif %}      
             </p></li>
             </ul>
           </div>

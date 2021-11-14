@@ -4,10 +4,10 @@
 {% endblock title %}
 {% block content %}
 <a href="{% url 'moviereview:home' %}" id="viewpost-back" style="margin: -20px 0 10px 20px;" class="btn btn-dark">&#10094;  Back</a><br><br>
-<div class="card mb-3" style="width: 90%;margin: 40px;margin-right: 100px;">
+<div class="card mb-3" style="width: 90%;margin: 50px;margin-left: 80px;">
   <div class="row g-0">
     <div class="col-md-6">
-      <img src="{{object.poster.url}}" class="img-fluid rounded-start" alt="...">
+      <img src="{{object.poster.url}}" class="img-fluid rounded-end"alt="...">
     </div>
     <div class="col-md-6">
       <div class="card-body">
@@ -21,7 +21,7 @@
           <li class="list-group-item"><h6 class="card-title">Posted On :{{object.posted_on}}</h6></li>
           <li class="list-group-item"><h5 class="card-title">Movie Name : {{object.title}}</h5></li>
           <li class="list-group-item"><h5 class="card-title">Directed By : {{object.director}}</h5></li>
-          <li class="list-group-item"><p class="card-text">Review : {{object.review}}</p></li>
+          <li class="list-group-item"><p class="card-text" style="line-height: 2;"><b>Review : </b>{{object.review}}</p></li>
         </ul>
       </div>
     </div>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-{{view.kwargs.username}} | Blogs
+{{view.kwargs.username}} | Posts
 {% endblock title %}
 {% block content %}
 <a href="{% url 'moviereview:home' %}" style="margin: -20px 0 10px 20px;" class="btn btn-dark">&#10094;  Back</a><br><br>
@@ -21,7 +21,7 @@
               <li class="list-group-item" style="margin: 0;padding: 0;">
               <img src="{{post.poster.url}}" class="card-img-top" style="width:300px;height: auto;"></li>
               <li class="list-group-item" style="padding: 4px;">
-              <h6 class="card-title"><b>Movie Name : {{post.title}}</b></h6></li>
+              <h6 class="card-title"><b>Movie Name : <a href="{% url 'moviereview:viewpost' post.id %}">{{post.title}}</a></b></h6></li>
               <li class="list-group-item" style="padding: 4px;">
               <b class="card-text">Directed By : {{post.director}}</b><br></li>
               <li class="list-group-item" style="padding: 4px;">
