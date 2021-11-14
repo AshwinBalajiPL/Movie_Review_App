@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('MovieReview.urls')),
+    path('user/',include('django.contrib.auth.urls')),
+    path('user/',include('users.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+  Registration
+{% endblock title %}
+{% block content %}
+{% load static %}
+<h1 style="margin-left: 65%;margin-bottom: 50px;color: white;">Register</h1>
+<div class="row" style="margin-bottom: 60px;">
+  <div class="col"style="border-right: 2px solid white;">
+    <img src="{% static 'img/cinearclogo.gif' %}" width="400px" style="margin-left: 180px;padding-top: 50px;">
+  </div>
+<div class="col" style="margin-left: 100px;">
+<form method="post" class="register" style="color: white;">
+  
+    {% csrf_token %}
+   
+    <label style="margin-right: 68px;">First Name :</label>{{form.first_name}} <br>
+    <label style="margin-right: 70px;">Last Name :</label>{{form.last_name}} <br>
+    <label style="margin-right: 76px;">Username :</label>{{form.username}} <br>
+    <label style="margin-right: 92px;">Email Id :</label>{{form.email}} <br>
+    <label style="margin-right: 80px;">Password :</label>{{form.password1}} <br>
+    <label style="margin-right: 20px;">Confirm Password :</label>{{form.password2}} <br>
+    <button style="margin: 50px 40px 10px 130px;" class="btn btn-light" type="submit">Register</button>
+    
+</form></div>
+</div>
+{% endblock content %}

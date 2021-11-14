@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MovieReview',
     'sorl.thumbnail',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -133,5 +134,5 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'moviereview:ome'
+LOGIN_REDIRECT_URL = 'moviereview:home'
 LOGOUT_REDIRECT_URL = 'login'

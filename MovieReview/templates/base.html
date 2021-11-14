@@ -86,15 +86,16 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             
-            
-              
+            {% if user.is_authenticated %}
+
               <a class="nav-item nav-link" href="{% url 'moviereview:mypost' user.username %}" id="link">Hey {{user.username}}<i></i></a>
               <a class="nav-item nav-link" href="{% url 'moviereview:addpost' %}" id="link">Add Post</a>
-              <a class="nav-item nav-link" href="" id="link">Logout</a>
-              
-               <!-- <a class="nav-item nav-link" href="" id="link">Register</a> -->
-               <!-- <a class="nav-item nav-link" href="" id="link">Log In</a> -->
-              
+              <a class="nav-item nav-link" href="{% url 'logout' %}" id="link">Logout</a>
+
+            {% else %}
+               <a class="nav-item nav-link" href="{% url 'users:register' %}" id="link">Register</a>
+               <a class="nav-item nav-link" href="{% url 'login' %}" id="link">Log In</a>
+            {% endif %}
 
           </div>
         </div>
