@@ -17,7 +17,7 @@
         overflow-y: scroll;
         overflow-x: hidden;
         margin: 0;
-        
+        background: rgba(0, 0, 0, 0.938);
       }
       .posts{ 
           margin: 10px 0;
@@ -72,7 +72,7 @@
         #card{
           width: 400px !important;
           text-align: center;
-          font-family: 'Yuji Syuku', serif;
+          font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
         }
   </style>
     <title>{% block title %}
@@ -82,14 +82,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin: 0 0 50px 0;">
       {% load static %}
-        <a href=""><img src="{% static 'cinearclogo.png' %}" style="width: 100px;height: 50px;margin-top: 2px;margin-right: 10px;"></a>
+        <a href="{% url 'moviereview:home' %}"><img src="{% static 'cinearclogo.png' %}" style="width: 100px;height: 50px;margin-top: 2px;margin-right: 10px;"></a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             
             
               
-              <a class="nav-item nav-link" href="" id="link">Hey {{user.username}}<i></i></a>
-              <a class="nav-item nav-link" href="" id="link">Add Post</a>
+              <a class="nav-item nav-link" href="{% url 'moviereview:mypost' user.username %}" id="link">Hey {{user.username}}<i></i></a>
+              <a class="nav-item nav-link" href="{% url 'moviereview:addpost' %}" id="link">Add Post</a>
               <a class="nav-item nav-link" href="" id="link">Logout</a>
               
                <!-- <a class="nav-item nav-link" href="" id="link">Register</a> -->

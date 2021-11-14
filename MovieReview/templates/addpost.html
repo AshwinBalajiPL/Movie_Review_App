@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+  Add Post
+{% endblock title %}
+{% block content %}
+
+{% if user.is_authenticated %}
+  
+<h1 style="margin-left: 4%;color: white;">Add Post</h1>
+<form method="post" class="userpost" enctype="multipart/form-data" style="color: white;">
+    {% csrf_token %}
+    
+    {{form.as_p}}
+    <br>
+    <button class="btn btn-dark" type="submit">submit</button>
+</form>
+<script>
+  var name = "{{ user.id }}";
+  document.getElementById("posted_by").value = name;
+</script>
+{% else %}
+
+<h4>You are not logged in</h4>
+<p>Please Login</p><a href="{% url 'login' %}"><button type="submit">Login</button></a>
+
+{% endif %}
+{% endblock content %}

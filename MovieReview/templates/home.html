@@ -4,10 +4,49 @@
 {% endblock title %}
     {% block content %}
 
-<h1 style="text-align: center;margin: 20px 0;">All Reviews</h1>
-{% for post in object_list %}
-
+    {% load static %}
+<div id="carouselExampleCaptionsDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="margin-top: -50px;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptionsDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptionsDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptionsDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'img/slide2.jpg' %}" class="d-block w-100" alt="..." style="opacity: 0.9;">
+      <div class="carousel-caption d-none d-md-block" style="color: white;">
+          <h2>First slide label</h2>
+          <h4>Some representative placeholder content for the first slide.</h4>
+      </div>
+    </div>
+    <div class="carousel-item" >
+      <img src="{% static 'img/slide1.jpeg' %}"  class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block" style="color: white;">
+        <h2>Second slide label</h2>
+        <h4>Some representative placeholder content for the second slide.</h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/slide3a1.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block" style="color: white;">
+        <h2>Third slide label</h2>
+        <h4>Some representative placeholder content for the third slide.</h4>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptionsDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptionsDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br><br><br>
+<h1 style="text-align: center;margin-bottom: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: white;">All Posts</h1><br>
 <div class="container">
+  {% for post in object_list %}
     <div class="row align-items-center">
       <div class="col" style=" display:flex; justify-content:center;">
         <div class="card" id="card">
@@ -21,38 +60,12 @@
             
             <li class="list-group-item" style="margin: 0;padding: 0;">
             <img src="{{post.poster.url}}" class="card-img-top" style="width:300px;height: auto;"></li>
-            <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="{{post.poster.url}}" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div> -->
             <li class="list-group-item" style="padding: 4px;">
-            <h6 class="card-title"><b>{{post.title}}</b></h6></li>
+            <h6 class="card-title"><b>Movie Name : {{post.title}}</b></h6></li>
             <li class="list-group-item" style="padding: 4px;">
-            <b class="card-text"><b>{{post.director}}</b><br></li>
+            <b class="card-text">Directed By : {{post.director}}</b><br></li>
             <li class="list-group-item" style="padding: 4px;">
-            <p style="font-size: medium;overflow-wrap:break-word;padding-top: 20px;" class="card-text">{{post.review|slice:":300"}}
+            <p class="card-text">{{post.review|slice:":300"}}
                     <!-- <a href="">Read More</a> -->
             </p></li>
             </ul>
