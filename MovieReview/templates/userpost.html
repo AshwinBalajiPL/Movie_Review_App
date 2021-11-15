@@ -11,16 +11,11 @@
         <div class="col" style=" display:flex; justify-content:center;">
           <div class="card" id="card">
               <ul class="list-group list-group-flush">
-                {% if user.username == post.posted_by.username %}
 
                 <li class="list-group-item" style="padding: 4px;">
                     <h6 class="card-text" style="text-align: left;margin-left: 25px;"><b>@{{post.posted_by.username}}</b></h6> 
                 </li>
-                {% else %}
-                <li class="list-group-item" style="padding: 4px;">
-                  <h6 class="card-text" style="text-align: left;margin-left: 25px;"><b><a href="{% url 'moviereview:userpost' post.posted_by.username %}">@{{post.posted_by.username}}</a></b></h6> 
-              </li>
-              {% endif %}
+
                 <li class="list-group-item" style="padding: 4px;">
                     <h6 class="card-text" style="text-align: left;margin-left: 25px;">Posted on: <b>{{post.posted_on.date}}</b></h6>
                 </li>
@@ -33,7 +28,7 @@
               <b class="card-text">Directed By : {{post.director}}</b><br></li>
               <li class="list-group-item" style="padding: 4px;">
               <p class="card-text">{{post.review|slice:":300"}}
-                      <a href="">Read More</a>
+                      <a href="{% url 'moviereview:viewpost' post.id %}">Read More</a>
               </p></li>
               </ul>
             </div>

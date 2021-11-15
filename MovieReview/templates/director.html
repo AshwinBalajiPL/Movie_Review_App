@@ -32,7 +32,7 @@
               <b class="card-text">Directed By : {{post.director}}</b><br></li>
               <li class="list-group-item" style="padding: 4px;">
               <p class="card-text">{{post.review|slice:":300"}}
-                      <a href="">Read More</a>
+                      <a href="{% url 'moviereview:viewpost' post.id %}">Read More</a>
               </p></li>
               </ul>
             </div>
