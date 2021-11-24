@@ -23,7 +23,7 @@
               <li class="list-group-item" style="padding: 4px;">
               <h6 class="card-title"><b>Movie Name : <a href="{% url 'moviereview:viewpost' post.id %}">{{post.title}}</a></b></h6></li>
               <li class="list-group-item" style="padding: 4px;">
-              <b class="card-text">Directed By : {{post.director}}</b><br></li>
+              <b class="card-text">Directed By : <a href="{% url 'moviereview:director' post.director %}">{{post.director}}</a></b><br></li>
               <li class="list-group-item" style="padding: 4px;">
               <p class="card-text">{{post.review|slice:":300"}}
                       <a href="{% url 'moviereview:viewpost' post.id %}">Read More</a>
