@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 class Home(ListView):
-    paginate_by = 1
+    paginate_by = 5
     model = Movie_Review
     template_name= 'home.html'
 
