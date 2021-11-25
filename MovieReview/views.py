@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 from .models import Movie_Review
 from django.views.generic import ListView,DetailView,CreateView
 from .forms import Review
+from django.core.paginator import Paginator
 
 # Create your views here.
 class Home(ListView):
+    paginate_by = 5
     model = Movie_Review
     template_name= 'home.html'
 
