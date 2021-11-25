@@ -36,9 +36,6 @@ class UserPost(ListView):
         user = get_object_or_404(User,username=self.kwargs.get('username'))
         return Movie_Review.objects.filter(posted_by=user).order_by('-posted_on')
 
-# class Director(ListView):
-#     model = Movie_Review
-#     template_name = "director.html"
 def Director(request,dir):
     directors= Movie_Review.objects.filter(director=dir)
     return render(request,'director.html',{'directors':dir,'directorposts':directors})
