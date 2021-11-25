@@ -5,6 +5,7 @@
     {% block content %}
 
     {% load static %}
+    {% if page_obj.number == 1 %}
 <div id="carouselExampleCaptionsFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="margin-top: -50px;">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptionsFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -42,7 +43,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div><br><br>
+</div><br><br>{% endif %}
 <h1 style="text-align: center;margin-bottom: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: white;">All Posts</h1><br>
 <div class="container">
   {% for post in object_list %}
@@ -83,23 +84,30 @@
 </div>
 
 {% endfor %}
-<div class="pagination">
+<br><br>
+<div class="pagination" style="color: white;justify-content: center;">
   <span class="step-links">
-      {% if page_obj.has_previous %}
-      <button class="btn btn-outline-light"><a href="?page=1">&laquo; first</a></button>
-          <!-- <a href="?page={{ page_obj.previous_page_number }}">previous</a> -->
+      {% if page_obj.number == 2 %}
+      <a href="?page=1" style="color: white;"><button class="btn btn-outline-light">&lsaquo; First</button></a>
+      {% endif %}
+      {% if page_obj.number > 2 %}
+      <a href="?page={{ page_obj.previous_page_number }}" style="color: white;"> <button class="btn btn-outline-light">&laquo; Prev</button></a>
       {% endif %}
 
       <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
       </span>
-
-      {% if page_obj.has_next %}
-          <button class="btn btn-outline-light"><a href="?page={{ page_obj.next_page_number }}">next</a></button>
-          <!-- <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a> -->
+      
+      {% if page_obj.has_next %}      
+          {% if page_obj.next_page_number == page_obj.paginator.num_pages %}
+           <a href="?page={{ page_obj.paginator.num_pages }}" style="color: white;"><button class="btn btn-outline-light">Last &raquo;</button></a>
+           {% else %}
+          <a href="?page={{ page_obj.next_page_number }}" style="color: white;"><button class="btn btn-outline-light">Next &raquo;</button></a>
+          {% endif %}
       {% endif %}
   </span>
 </div>
+<br><br><br>
 
 {% endblock content %}
 
